@@ -81,6 +81,12 @@ paginate: true
 
 ---
 
+## 网站预览（管理员页面）
+
+![bg contain](../screenshots/admin.png)
+
+---
+
 ## 网站预览（我的借阅 / 预约 / 罚金）
 
 ![bg contain](../screenshots/my_loans.png)
