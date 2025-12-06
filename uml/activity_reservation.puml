@@ -1,17 +1,16 @@
 @startuml
-skinparam defaultFontName "Microsoft YaHei"
-skinparam defaultMonospacedFontName "Microsoft YaHei"
+!include _skin.iuml
 start
-:æ£€æŸ¥æ˜¯å¦æœ‰åœ¨é¦†å‰¯æœ¬;
-if (æœ‰?) then (yes)
-  :ä¸å…è®¸é¢„çº¦;
+:¼ì²éÊÇ·ñÓĞÔÚ¹İ¸±±¾;
+if (ÓĞ?) then (yes)
+  :²»ÔÊĞíÔ¤Ô¼;
 else (no)
-  :è¿›å…¥é¢„çº¦é˜Ÿåˆ—;
-  :æœ‰å‰¯æœ¬å½’è¿˜æ—¶é€šçŸ¥;
-  if (åœ¨æœ‰æ•ˆæœŸå†…å–ä¹¦?) then (yes)
-    :é¢„çº¦æˆåŠŸ;
+  :½øÈëÔ¤Ô¼¶ÓÁĞ;
+  :ÓĞ¸±±¾¹é»¹Ê±Í¨Öª;
+  if (ÔÚÓĞĞ§ÆÚÄÚÈ¡Êé?) then (yes)
+    :Ô¤Ô¼³É¹¦;
   else (no)
-    :é¢„çº¦è¿‡æœŸ;
+    :Ô¤Ô¼¹ıÆÚ;
   endif
 endif
 stop

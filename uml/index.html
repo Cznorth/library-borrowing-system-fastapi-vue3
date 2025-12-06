@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://cznorth.github.io/library-borrowing-system-fastapi-vue3/uml/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>UML图集 - 图书馆借阅系统文档</title>
+        <title>使用说明 - 图书馆借阅系统文档</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -78,8 +78,18 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="./" class="nav-link active" aria-current="page">UML图集</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">UML图集</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">使用说明</a>
+</li>
+                                    
+<li>
+    <a href="gallery/" class="dropdown-item">图集预览</a>
+</li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="../report/" class="nav-link">实验报告</a>
@@ -101,7 +111,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" href="../report/" class="nav-link">
+                                <a rel="next" href="gallery/" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -128,6 +138,10 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#uml" class="nav-link">UML图使用说明</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#_1" class="nav-link">中文显示与编码说明</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -158,7 +172,18 @@
 <li>数据设计类图：<code>data_design_class.puml</code></li>
 <li>数据操作活动图：<code>data_operation_activity.puml</code></li>
 </ul>
-<p>导出图片后请放入 <code>docs/uml/exports/</code> 目录并在报告中引用。</p></div>
+<p>导出图片后请放入 <code>docs/uml/exports/</code> 目录并在报告中引用。</p>
+<h2 id="_1">中文显示与编码说明</h2>
+<ul>
+<li>文件编码：为避免中文乱码，请将所有 <code>*.puml</code> 文件保存为 <code>GB2312</code> 编码（VS Code：右下角编码 → 重新以编码打开 → 另存为）。</li>
+<li>字体统一：所有图在顶端 <code>!include _skin.iuml</code>，统一中文字体为 <code>Microsoft YaHei</code>，可按需改为其它中文字体。</li>
+<li>Graphviz 渲染：本地脚本会检测并使用 <code>dot.exe</code> 进行渲染，进一步减少中文兼容问题。</li>
+<li>渲染命令（在 <code>docs/uml</code> 目录）：</li>
+<li><code>java -jar ..\tools\plantuml.jar -graphvizdot "C:\Program Files\Graphviz\bin\dot.exe" -tpng -o exports *.puml</code></li>
+</ul>
+<p>若仍存在中文显示问题，建议：
+- 安装备用中文字体（如 <code>Noto Sans CJK SC</code> 或 <code>思源黑体</code>）并在 <code>_skin.iuml</code> 中替换字体名。
+- 确认所有 <code>*.puml</code> 已保存为 <code>GB2312</code>（而非 UTF-8/UTF-16）。</p></div>
             </div>
         </div>
 

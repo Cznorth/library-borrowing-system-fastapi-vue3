@@ -1,6 +1,5 @@
 @startuml
-skinparam defaultFontName "Microsoft YaHei"
-skinparam defaultMonospacedFontName "Microsoft YaHei"
+!include _skin.iuml
 class Users {
   id
   username

@@ -11,10 +11,14 @@ FORMAT = os.environ.get('UML_FORMAT', 'png')  # png or jpg
 PLANTUML_JAR = os.environ.get('PLANTUML_JAR', str(BASE.parent / 'tools' / 'plantuml.jar'))
 
 def render_with_jar(puml_path: Path):
+    dot = r"C:\Program Files\Graphviz\bin\dot.exe"
     cmd = [
         'java', '-jar', PLANTUML_JAR,
-        f'-t{FORMAT}', '-o', str(EXPORT), str(puml_path)
+        f'-t{FORMAT}', '-o', str(EXPORT)
     ]
+    if os.path.exists(dot):
+        cmd.extend(['-graphvizdot', dot])
+    cmd.append(str(puml_path))
     subprocess.check_call(cmd, cwd=str(BASE))
 
 def convert_png_to_jpg():
