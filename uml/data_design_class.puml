@@ -1,0 +1,56 @@
+@startuml
+class Users {
+  id
+  username
+  email
+  role
+  password_hash
+}
+class Books {
+  id
+  isbn
+  title
+  author
+  publisher
+  year
+}
+class BookCopies {
+  id
+  book_id
+  barcode
+  status
+  shelf_location
+}
+class Loans {
+  id
+  copy_id
+  user_id
+  loan_date
+  due_date
+  return_date
+  renew_count
+}
+class Reservations {
+  id
+  book_id
+  user_id
+  status
+  created_at
+}
+class Fines {
+  id
+  loan_id
+  user_id
+  amount
+  status
+  created_at
+  paid_at
+}
+Users -- Loans
+Users -- Reservations
+Users -- Fines
+Books -- BookCopies
+BookCopies -- Loans
+Loans -- Fines
+@enduml
+

@@ -1,0 +1,17 @@
+@startuml
+start
+:检查是否有在馆副本;
+if (有?) then (yes)
+  :不允许预约;
+else (no)
+  :进入预约队列;
+  :有副本归还时通知;
+  if (在有效期内取书?) then (yes)
+    :预约成功;
+  else (no)
+    :预约过期;
+  endif
+endif
+stop
+@enduml
+

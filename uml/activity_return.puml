@@ -1,0 +1,16 @@
+@startuml
+start
+:查找借阅记录;
+if (存在且未归还?) then (yes)
+  :计算是否超期;
+  :更新借阅为归还;
+  if (超期?) then (yes)
+    :创建罚金记录;
+  endif
+  :更新副本为在馆;
+else (no)
+  :失败返回;
+endif
+stop
+@enduml
+
