@@ -5,7 +5,10 @@ class User {
   +email: str
   +role: Role
 }
-enum Role { reader; admin }
+enum Role {
+  reader
+  admin
+}
 class Book {
   +id: int
   +isbn: str
@@ -17,7 +20,11 @@ class BookCopy {
   +barcode: str
   +status: CopyStatus
 }
-enum CopyStatus { available; loaned; retired }
+enum CopyStatus {
+  available
+  loaned
+  retired
+}
 class Loan {
   +id: int
   +loan_date: datetime
@@ -28,13 +35,21 @@ class Reservation {
   +id: int
   +status: ReservationStatus
 }
-enum ReservationStatus { queued; notified; expired; canceled }
+enum ReservationStatus {
+  queued
+  notified
+  expired
+  canceled
+}
 class Fine {
   +id: int
   +amount: decimal
   +status: FineStatus
 }
-enum FineStatus { unpaid; paid }
+enum FineStatus {
+  unpaid
+  paid
+}
 User "1" -- "*" Loan
 User "1" -- "*" Reservation
 User "1" -- "*" Fine

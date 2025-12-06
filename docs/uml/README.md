@@ -2,8 +2,11 @@
 
 - 所有UML图以PlantUML源码形式存放于本目录（*.puml）。
 - 导出方法：
-  - 方式1：VSCode 安装 PlantUML 插件，右键导出PNG/SVG。
-  - 方式2：访问在线 PlantUML Server，将源码粘贴导出。
+  - 方式1（本地离线，推荐）：安装 Java 并下载 PlantUML jar 到 `docs/tools/plantuml.jar`，运行：
+    - `set UML_FORMAT=png && python docs/uml/render_local.py`
+    - 如需 JPG：`set UML_FORMAT=jpg && python docs/uml/render_local.py`
+  - 方式2（VSCode）：安装 PlantUML 插件，右键导出PNG/SVG。
+  - 方式3（在线）：Kroki/PlantUML在线服务（不稳定，仅备选）。
 - 文件清单：
   - 用例图：`usecase.puml`
   - 包图：`package.puml`
