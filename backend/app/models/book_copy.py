@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Enum
+from sqlalchemy.orm import relationship
 import enum
 from ..core.db import Base
 
@@ -17,4 +18,6 @@ class BookCopy(Base):
     barcode = Column(String(64), unique=True, nullable=False)
     shelf_location = Column(String(64))
     status = Column(Enum(CopyStatus), default=CopyStatus.available, nullable=False)
+
+    book = relationship("Book")
 

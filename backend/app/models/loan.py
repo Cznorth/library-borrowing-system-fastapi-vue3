@@ -1,4 +1,5 @@
 from sqlalchemy import Column, Integer, ForeignKey, DateTime
+from sqlalchemy.orm import relationship
 from datetime import datetime
 from ..core.db import Base
 
@@ -13,4 +14,7 @@ class Loan(Base):
     due_date = Column(DateTime, nullable=False)
     return_date = Column(DateTime, nullable=True)
     renew_count = Column(Integer, default=0, nullable=False)
+
+    copy = relationship("BookCopy")
+    user = relationship("User")
 
