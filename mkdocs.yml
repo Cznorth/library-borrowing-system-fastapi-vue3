@@ -1,0 +1,21 @@
+site_name: 图书馆借阅系统文档
+site_url: https://cznorth.github.io/library-borrowing-system-fastapi-vue3/
+repo_url: https://github.com/Cznorth/library-borrowing-system-fastapi-vue3
+theme:
+  name: mkdocs
+docs_dir: docs
+nav:
+  - 需求说明: requirements.md
+  - 用例详述:
+    - 登录: usecases/login_usecase.md
+    - 注册: usecases/register_usecase.md
+    - 搜索: usecases/search_usecase.md
+    - 借阅: usecases/borrow_usecase.md
+    - 归还: usecases/return_usecase.md
+    - 续借: usecases/renew_usecase.md
+    - 预约: usecases/reserve_usecase.md
+    - 管理后台: usecases/admin_manage_books_usecase.md
+    - 缴纳罚金: usecases/pay_fine_usecase.md
+  - UML图集: uml/README.md
+  - 实验报告: report.md
+  - 汇报PPT: ppt/slides.md

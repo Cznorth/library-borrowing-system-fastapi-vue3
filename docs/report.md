@@ -2,15 +2,48 @@
 
 ## 1. 需求获取与分析（20%）
 - 自然语言需求：见 `docs/requirements.md`。
-- 用例图：`docs/uml/usecase.puml`；用例详细描述：`docs/usecases/*.md`（含前置/后置/基本/异常流程）。
+- 用例图：
+  
+  ![用例图](./uml/exports/usecase.png)
+  
+  用例详细描述：`docs/usecases/*.md`（含前置/后置/基本/异常流程）。
 
 ## 2. 软件体系结构设计（20%）
-- 包图：`docs/uml/package.puml`；部署图：`docs/uml/deployment.puml`；构件图：`docs/uml/components.puml`。
-- 用户界面设计：原型示意图（前端页面）；界面元素类图：`docs/uml/class_ui.puml`；顺序图（界面跳转）：`docs/uml/sequence_navigation.puml`。
+- 包图：
+  
+  ![包图](./uml/exports/package.png)
+  
+- 部署图：
+  
+  ![部署图](./uml/exports/deployment.png)
+  
+- 构件图：
+  
+  ![构件图](./uml/exports/components.png)
+  
+- 用户界面设计：界面元素类图与跳转顺序图：
+  
+  ![界面类图](./uml/exports/class_ui.png)
+  
+  ![跳转顺序图](./uml/exports/sequence_navigation.png)
 
 ## 3. 软件详细设计（20%）
-- 领域类图：`docs/uml/class_domain.puml`；数据设计类图：`docs/uml/data_design_class.puml`。
-- 活动图：借阅/归还/预约：`docs/uml/activity_*.puml`；
+- 领域类图：
+  
+  ![领域类图](./uml/exports/class_domain.png)
+  
+- 数据设计类图：
+  
+  ![数据设计类图](./uml/exports/data_design_class.png)
+  
+- 活动图（借阅/归还/预约）：
+  
+  ![借阅活动图](./uml/exports/activity_borrow.png)
+  
+  ![归还活动图](./uml/exports/activity_return.png)
+  
+  ![预约活动图](./uml/exports/activity_reservation.png)
+  
 - 子系统与构件设计：用户、图书/副本、借阅、预约子系统顺序图与类图（结合上文图示）。
 
 ## 4. 软件实现与测试（20%）
