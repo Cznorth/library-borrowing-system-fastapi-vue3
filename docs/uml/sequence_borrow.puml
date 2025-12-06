@@ -1,6 +1,5 @@
 @startuml
-skinparam defaultFontName "Microsoft YaHei"
-skinparam defaultMonospacedFontName "Microsoft YaHei"
+!include _skin.iuml
 actor Reader
 Reader -> Frontend: click Borrow(copy_id)
 Frontend -> Backend: POST /loans {copy_id}
