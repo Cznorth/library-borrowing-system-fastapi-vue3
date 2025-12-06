@@ -58,7 +58,7 @@
         </el-form-item>
         <el-form-item label="角色">
           <el-select v-model="editForm.role">
-            <el-option label="普通用户" value="user" />
+            <el-option label="普通用户" value="reader" />
             <el-option label="管理员" value="admin" />
           </el-select>
         </el-form-item>
@@ -89,7 +89,7 @@ const editForm = reactive({
   id: 0,
   username: '',
   email: '',
-  role: 'user'
+  role: 'reader'
 })
 
 async function load() {
