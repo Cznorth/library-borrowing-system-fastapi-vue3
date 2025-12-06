@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from ...deps import get_db, require_admin
 from ...repositories.books import BooksRepository
 from ...models.book import Book
+from ...models.book_copy import BookCopy, CopyStatus
 from ...schemas.book import BookCreate
 from ...services.openlibrary_provider import get_book_by_isbn, search_books
 
@@ -15,8 +16,10 @@ router = APIRouter()
 def list_books(q: str | None = None, page: int = 1, page_size: int = 10, db: Session = Depends(get_db)):
     repo = BooksRepository(db)
     result = repo.list(q=q, page=page, page_size=page_size)
-    return {"total": result["total"], "items": [
-        {
+    items = []
+    for b in result["items"]:
+        avail = db.query(BookCopy).filter(BookCopy.book_id == b.id, BookCopy.status == CopyStatus.available).count()
+        items.append({
             "id": b.id,
             "isbn": b.isbn,
             "title": b.title,
@@ -27,8 +30,9 @@ def list_books(q: str | None = None, page: int = 1, page_size: int = 10, db: Ses
             "tags": b.tags,
             "summary": b.summary,
             "cover_url": b.cover_url,
-        } for b in result["items"]
-    ]}
+            "available_copies": avail,
+        })
+    return {"total": result["total"], "items": items}
 
 
 @router.get("/{book_id}")

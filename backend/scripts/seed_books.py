@@ -14,6 +14,9 @@ if str(ROOT) not in sys.path:
 from app.core.config import settings
 from app.core.db import SessionLocal
 from app.repositories.books import BooksRepository
+from app.repositories.copies import CopiesRepository
+from app.models.book import Book
+from app.models.book_copy import BookCopy
 from app.services.googlebooks_provider import search_books as gb_search, get_book_by_isbn as gb_by_isbn
 from app.services.openlibrary_provider import search_books as ol_search, get_book_by_isbn as ol_by_isbn, COVER_URL_TMPL
 
@@ -144,6 +147,19 @@ def run_import(args):
             "skipped": total_skipped,
             "errors": errors,
         }, ensure_ascii=False, indent=2))
+
+        if args.add_copies and args.add_copies > 0:
+            copies_repo = CopiesRepository(db)
+            created_total = 0
+            books = db.query(Book).all()
+            for b in books:
+                existing = db.query(BookCopy).filter(BookCopy.book_id == b.id).count()
+                need = max(0, args.add_copies - existing)
+                for i in range(need):
+                    barcode = f"BC{b.id:06d}-{existing + i + 1:03d}"
+                    copies_repo.create(book_id=b.id, barcode=barcode, shelf_location=None)
+                    created_total += 1
+            print(json.dumps({"copies_created": created_total}, ensure_ascii=False, indent=2))
     finally:
         db.close()
 
@@ -158,6 +174,7 @@ def main():
     parser.add_argument("--source", type=str, default="googlebooks", choices=["googlebooks", "openlibrary"], help="Data source")
     parser.add_argument("--validate-images", action="store_true", help="Validate cover image URLs")
     parser.add_argument("--chunk-size", type=int, default=100, help="Batch size for commit")
+    parser.add_argument("--add-copies", type=int, default=0, help="Ensure each book has at least N copies")
     parser.add_argument("--dry-run", action="store_true", help="Do not write to DB, only preview counts")
     args = parser.parse_args()
     run_import(args)
