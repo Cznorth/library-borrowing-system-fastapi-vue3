@@ -1,4 +1,6 @@
 @startuml
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultMonospacedFontName "Microsoft YaHei"
 start
 :检查用户状态/上限;
 if (副本可借?) then (yes)

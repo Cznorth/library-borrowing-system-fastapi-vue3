@@ -1,4 +1,6 @@
 @startuml
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultMonospacedFontName "Microsoft YaHei"
 actor User
 User -> LoginPage: submit(username,password)
 LoginPage -> Backend: POST /auth/login

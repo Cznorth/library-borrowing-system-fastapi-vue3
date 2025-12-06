@@ -1,4 +1,6 @@
 @startuml
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultMonospacedFontName "Microsoft YaHei"
 start
 :CRUD Books/BookCopies;
 :CRUD Users;

@@ -1,4 +1,6 @@
 @startuml
+skinparam defaultFontName "Microsoft YaHei"
+skinparam defaultMonospacedFontName "Microsoft YaHei"
 start
 :查找借阅记录;
 if (存在且未归还?) then (yes)
