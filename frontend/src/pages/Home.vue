@@ -6,16 +6,16 @@
         placeholder="搜索书名或作者"
         class="search-input"
         size="large"
-        @keyup.enter="search"
+        @keyup.enter="search(true)"
       >
         <template #append>
-          <el-button :icon="Search" @click="search" />
+          <el-button :icon="Search" @click="search(true)" />
         </template>
       </el-input>
     </div>
 
     <el-empty v-if="!books.length && searched" description="未找到相关图书" />
-    
+
     <el-row :gutter="20" v-else>
       <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="b in books" :key="b.id">
         <el-card class="book-card" shadow="hover" @click="$router.push(`/books/${b.id}`)">
@@ -49,6 +49,18 @@
         </el-card>
       </el-col>
     </el-row>
+
+    <div class="pagination-wrapper" v-if="total > 0">
+      <el-pagination
+        v-model:current-page="currentPage"
+        v-model:page-size="pageSize"
+        :total="total"
+        :page-sizes="[8, 12, 16, 24]"
+        layout="total, sizes, prev, pager, next, jumper"
+        @current-change="onPageChange"
+        @size-change="onSizeChange"
+      />
+    </div>
   </div>
 </template>
 
@@ -60,20 +72,37 @@ import { Search, Notebook } from '@element-plus/icons-vue'
 const q = ref('')
 const books = ref<any[]>([])
 const searched = ref(false)
+const currentPage = ref(1)
+const pageSize = ref(12)
+const total = ref(0)
 
-async function search() {
+async function search(reset = false) {
+  if (reset) {
+    currentPage.value = 1
+  }
   try {
-    const { data } = await axios.get('/api/books', { params: { q: q.value } })
-    // Check if data is array or object with items
+    const { data } = await axios.get('/api/books', { params: { q: q.value || undefined, page: currentPage.value, page_size: pageSize.value } })
     books.value = Array.isArray(data) ? data : (data.items || [])
+    total.value = Array.isArray(data) ? data.length : (data.total || 0)
     searched.value = true
   } catch (e) {
     console.error(e)
   }
 }
 
-onMounted(() => {
+function onPageChange(p: number) {
+  currentPage.value = p
   search()
+}
+
+function onSizeChange(s: number) {
+  pageSize.value = s
+  currentPage.value = 1
+  search()
+}
+
+onMounted(() => {
+  search(true)
 })
 </script>
 
@@ -147,5 +176,11 @@ onMounted(() => {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.pagination-wrapper {
+  margin-top: 24px;
+  display: flex;
+  justify-content: center;
 }
 </style>
