@@ -5,6 +5,7 @@ theme:
   name: mkdocs
 docs_dir: docs
 nav:
+  - 首页: index.md
   - 需求说明: requirements.md
   - 用例详述:
     - 登录: usecases/login_usecase.md

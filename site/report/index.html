@@ -35,6 +35,9 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
+                                <a href=".." class="nav-link">首页</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../requirements/" class="nav-link">需求说明</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -223,15 +226,22 @@
 </ul>
 <h2 id="4-20">4. 软件实现与测试（20%）</h2>
 <ul>
-<li>后端：<code>backend/app</code>（FastAPI + SQLAlchemy + Alembic）；核心模块与API详见 <code>app/api/v1/*</code>。</li>
-<li>前端：<code>frontend/src</code>（Vue3 + Pinia + Router + Axios）。</li>
-<li>测试计划：单元/集成/端到端；后端集成测试见 <code>backend/tests/*</code>；前端测试：<code>frontend/tests</code> 与 <code>playwright.config.ts</code>。</li>
-<li>测试结果与缺陷记录：在开发过程中记录于 Issues/PR（提交记录截图与链接）。</li>
+<li>技术栈：后端（FastAPI、SQLAlchemy、Alembic、PostgreSQL），前端（Vue3、Pinia、Vue Router、Axios），测试（PyTest、Vitest、Playwright）。</li>
+<li>后端实现：分层架构（API/Repos/Services/Models），JWT鉴权，角色访问控制，借阅/归还/续借/预约/罚金业务逻辑；数据库迁移基于 Alembic。</li>
+<li>前端实现：路由守卫（未登录跳转登录、管理员路由限制）、状态管理、页面与组件拆分；与后端 API 对接。</li>
+<li>测试计划：单元/集成/端到端；后端集成测试见 <code>backend/tests/*</code>；前端测试：<code>frontend/tests</code> 与 <code>playwright.config.ts</code>；CI可执行构建与检查。</li>
+<li>网站预览（本地开发截图）：</li>
 </ul>
+<p><img alt="首页" src="../screenshots/home.png" /></p>
+<p><img alt="登录页" src="../screenshots/login.png" /></p>
+<p><img alt="管理员首页" src="../screenshots/admin.png" /></p>
+<p><img alt="我的借阅" src="../screenshots/my_loans.png" /></p>
+<p><img alt="我的预约" src="../screenshots/my_reservations.png" /></p>
+<p><img alt="我的罚金" src="../screenshots/my_fines.png" /></p>
 <h2 id="5-10">5. 版本管理与过程（10%）</h2>
 <ul>
 <li>GitHub 仓库：分支策略（<code>main</code>/<code>dev</code>/<code>feat/*</code>/<code>fix/*</code>）、提交规范（语义化）。</li>
-<li>CI：<code>GitHub Actions</code> 在 <code>.github/workflows/ci.yml</code>；含后端编译检查与前端构建与Lint。</li>
+<li>自动化：MkDocs 部署静态文档至 GitHub Pages，Marp 生成汇报 PPT；CI 可扩展为构建与测试流水线。</li>
 </ul>
 <h2 id="6-10">6. 汇报材料（10%）</h2>
 <ul>

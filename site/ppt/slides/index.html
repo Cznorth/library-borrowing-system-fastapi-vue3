@@ -35,6 +35,9 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
+                                <a href="../.." class="nav-link">首页</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="../../requirements/" class="nav-link">需求说明</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -142,7 +145,7 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_2" class="nav-link">需求与用例</a>
+            <li class="nav-item" data-bs-level="2"><a href="#_2" class="nav-link">技术栈</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -150,19 +153,51 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_4" class="nav-link">详细设计与关键流程</a>
+            <li class="nav-item" data-bs-level="2"><a href="#uml" class="nav-link">UML 总览（用例图）</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">功能演示</a>
+            <li class="nav-item" data-bs-level="2"><a href="#uml_1" class="nav-link">UML（包图 / 部署图）</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_6" class="nav-link">测试与结果</a>
+            <li class="nav-item" data-bs-level="2"><a href="#uml_2" class="nav-link">UML（构件图 / 界面类图）</a>
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#_7" class="nav-link">总结与展望</a>
+            <li class="nav-item" data-bs-level="2"><a href="#uml_3" class="nav-link">UML（领域类 / 数据设计类）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#uml_4" class="nav-link">UML（活动与顺序）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_4" class="nav-link">网站预览（首页 / 登录）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_5" class="nav-link">网站预览（管理员页面）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_6" class="nav-link">网站预览（我的借阅 / 预约 / 罚金）</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_7" class="nav-link">核心流程说明</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_8" class="nav-link">测试与结果</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_9" class="nav-link">部署与演示</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#_10" class="nav-link">总结与展望</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -174,38 +209,88 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="ppt">图书馆借阅系统 — 汇报PPT</h1>
+<p>课程实验完整交付：读者/管理员核心借阅业务系统</p>
+<hr />
 <h2 id="_1">背景与目标</h2>
 <ul>
-<li>面向读者与管理员的借阅业务系统；课程实验完整交付。</li>
+<li>提供检索、借阅/归还/续借、预约与罚金功能</li>
+<li>管理员维护书目/副本与用户，查看统计</li>
+<li>目标：可运行、可测试、可部署的全栈系统</li>
 </ul>
-<h2 id="_2">需求与用例</h2>
+<hr />
+<h2 id="_2">技术栈</h2>
 <ul>
-<li>用例图与关键用例（登录、检索、借阅/归还/续借、预约、罚金、后台管理）。</li>
+<li>后端：FastAPI、SQLAlchemy、Alembic、PostgreSQL</li>
+<li>前端：Vue3、Pinia、Vue Router、Axios、Vite</li>
+<li>测试：PyTest、Vitest、Playwright</li>
+<li>文档与演示：MkDocs（静态站）、Marp（PPT）</li>
 </ul>
+<hr />
 <h2 id="_3">架构设计</h2>
 <ul>
-<li>前后端分离：Vue3 + FastAPI + PostgreSQL；分层与路由守卫。</li>
-<li>UML：包图、部署图、构件图、类图与顺序图。</li>
+<li>分层：API / Repositories / Services / Models</li>
+<li>鉴权与角色：JWT + 路由守卫（管理员路由限制）</li>
+<li>迁移：Alembic 管理数据库变更</li>
 </ul>
-<h2 id="_4">详细设计与关键流程</h2>
+<hr />
+<h2 id="uml">UML 总览（用例图）</h2>
+<p><img alt="bg contain" src="../../uml/exports/usecase.png" /></p>
+<hr />
+<h2 id="uml_1">UML（包图 / 部署图）</h2>
+<p><img alt="bg contain" src="../../uml/exports/package.png" /></p>
+<p><img alt="bg contain" src="../../uml/exports/deployment.png" /></p>
+<hr />
+<h2 id="uml_2">UML（构件图 / 界面类图）</h2>
+<p><img alt="bg contain" src="../../uml/exports/components.png" /></p>
+<p><img alt="bg contain" src="../../uml/exports/class_ui.png" /></p>
+<hr />
+<h2 id="uml_3">UML（领域类 / 数据设计类）</h2>
+<p><img alt="bg contain" src="../../uml/exports/class_domain.png" /></p>
+<p><img alt="bg contain" src="../../uml/exports/data_design_class.png" /></p>
+<hr />
+<h2 id="uml_4">UML（活动与顺序）</h2>
+<p><img alt="bg contain" src="../../uml/exports/activity_borrow.png" /></p>
+<p><img alt="bg contain" src="../../uml/exports/sequence_navigation.png" /></p>
+<hr />
+<h2 id="_4">网站预览（首页 / 登录）</h2>
+<p><img alt="bg contain" src="../../screenshots/home.png" /></p>
+<p><img alt="bg contain" src="../../screenshots/login.png" /></p>
+<hr />
+<h2 id="_5">网站预览（管理员页面）</h2>
+<p><img alt="bg contain" src="../../screenshots/admin.png" /></p>
+<hr />
+<h2 id="_6">网站预览（我的借阅 / 预约 / 罚金）</h2>
+<p><img alt="bg contain" src="../../screenshots/my_loans.png" /></p>
+<p><img alt="bg contain" src="../../screenshots/my_reservations.png" /></p>
+<p><img alt="bg contain" src="../../screenshots/my_fines.png" /></p>
+<hr />
+<h2 id="_7">核心流程说明</h2>
 <ul>
-<li>借阅与归还/续借、预约队列与到书通知、罚金计算（0.5元/天）。</li>
+<li>借阅：副本状态校验→创建借阅→到期时间计算→罚金联动</li>
+<li>归还：归还时间记录→副本状态恢复→罚金结算</li>
+<li>续借：借阅周期与次数限制→更新到期时间</li>
+<li>预约：FIFO 队列→到书通知→过期处理</li>
 </ul>
-<h2 id="_5">功能演示</h2>
+<hr />
+<h2 id="_8">测试与结果</h2>
 <ul>
-<li>登录→搜索→详情→借阅→我的借阅→归还/续借→我的罚金；后台管理。</li>
+<li>后端：集成测试通过（用户/图书/借阅流程）</li>
+<li>前端：构建与基础测试通过</li>
+<li>E2E：Playwright 驱动页面与路由校验</li>
 </ul>
-<h2 id="_6">测试与结果</h2>
+<hr />
+<h2 id="_9">部署与演示</h2>
 <ul>
-<li>后端集成测试与前端构建通过；缺陷记录与修复说明。</li>
+<li>文档站点：MkDocs，GitHub Pages 自动发布</li>
+<li>后端：Uvicorn / Docker Compose，环境变量注入</li>
+<li>前端：Vite 构建与静态资源部署</li>
 </ul>
-<h2 id="_7">总结与展望</h2>
+<hr />
+<h2 id="_10">总结与展望</h2>
 <ul>
-<li>已实现核心功能；建议优化安全策略与统计可视化。</li>
-</ul>
-<blockquote>
-<p>注：可通过 <code>pandoc -s docs/ppt/slides.md -o docs/ppt/slides.pptx</code> 生成PPT。</p>
-</blockquote></div>
+<li>已实现核心借阅业务闭环</li>
+<li>可继续完善：通知服务、刷新令牌、速率限制、统计可视化</li>
+</ul></div>
             </div>
         </div>
 
