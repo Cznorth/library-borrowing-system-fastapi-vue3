@@ -1,0 +1,21 @@
+@startuml
+!include _skin.iuml
+package API {
+  [Auth Controller]
+  [Users Controller]
+  [Books Controller]
+}
+package Services {
+  [Auth Service]
+  [Books Service]
+  [Loans Service]
+}
+package Repository {
+  [Users Repo]
+  [Books Repo]
+}
+API --> Services
+Services --> Repository
+Repository --> Database
+@enduml
+

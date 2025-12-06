@@ -1,0 +1,18 @@
+@startuml
+!include _skin.iuml
+class LoginPage
+class HomePage
+class BookDetailPage
+class MyLoansPage
+class MyReservationsPage
+class AdminDashboard
+class BooksManagePage
+class UsersManagePage
+
+LoginPage --> HomePage : login success
+HomePage --> BookDetailPage : click item
+HomePage --> AdminDashboard : admin role
+AdminDashboard --> BooksManagePage
+AdminDashboard --> UsersManagePage
+@enduml
+

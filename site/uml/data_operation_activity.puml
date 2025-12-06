@@ -1,0 +1,11 @@
+@startuml
+!include _skin.iuml
+start
+:CRUD Books/BookCopies;
+:CRUD Users;
+:Loans: create/return/renew;
+:Reservations: enqueue/notify/expire/cancel;
+:Fines: create/pay;
+stop
+@enduml
+

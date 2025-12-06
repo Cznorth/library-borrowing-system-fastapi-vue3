@@ -1,0 +1,13 @@
+@startuml
+!include _skin.iuml
+actor User
+User -> LoginPage: submit(username,password)
+LoginPage -> Backend: POST /auth/login
+Backend --> LoginPage: JWT token
+LoginPage -> Router: set token & navigate('/')</n>
+Router -> HomePage: render
+HomePage -> Backend: GET /books?q=keyword
+Backend --> HomePage: list
+HomePage -> BookDetailPage: navigate('/books/:id')
+@enduml
+

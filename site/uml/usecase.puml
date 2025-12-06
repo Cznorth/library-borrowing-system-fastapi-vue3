@@ -1,0 +1,17 @@
+@startuml
+!include _skin.iuml
+actor Reader
+actor Admin
+
+rectangle "Library System" {
+  Reader --> (Register/Login)
+  Reader --> (Search Books)
+  Reader --> (Borrow/Return/Renew)
+  Reader --> (Reserve Book)
+  Reader --> (View History/Fines)
+  Admin --> (Manage Books/Copies)
+  Admin --> (Manage Users)
+  Admin --> (View Statistics)
+}
+@enduml
+
