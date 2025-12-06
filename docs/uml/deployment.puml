@@ -1,0 +1,15 @@
+@startuml
+node Browser
+node Frontend {
+  component Vue3
+}
+node Backend {
+  component FastAPI
+}
+database PostgreSQL
+
+Browser --> Frontend
+Frontend --> Backend
+Backend --> PostgreSQL
+@enduml
+

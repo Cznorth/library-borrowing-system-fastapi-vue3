@@ -1,0 +1,12 @@
+@startuml
+start
+:检查用户状态/上限;
+if (副本可借?) then (yes)
+  :创建借阅记录;
+  :更新副本为借出;
+else (no)
+  :失败返回;
+endif
+stop
+@enduml
+

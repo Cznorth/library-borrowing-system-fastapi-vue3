@@ -1,0 +1,19 @@
+@startuml
+package Frontend {
+  [Pages]
+  [Components]
+  [Stores]
+}
+package Backend {
+  [API]
+  [Services]
+  [Repositories]
+  [Models]
+}
+package Database {
+  [PostgreSQL]
+}
+Frontend --> Backend
+Backend --> Database
+@enduml
+

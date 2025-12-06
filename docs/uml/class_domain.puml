@@ -1,0 +1,46 @@
+@startuml
+class User {
+  +id: int
+  +username: str
+  +email: str
+  +role: Role
+}
+enum Role { reader; admin }
+class Book {
+  +id: int
+  +isbn: str
+  +title: str
+  +author: str
+}
+class BookCopy {
+  +id: int
+  +barcode: str
+  +status: CopyStatus
+}
+enum CopyStatus { available; loaned; retired }
+class Loan {
+  +id: int
+  +loan_date: datetime
+  +due_date: datetime
+  +return_date: datetime
+}
+class Reservation {
+  +id: int
+  +status: ReservationStatus
+}
+enum ReservationStatus { queued; notified; expired; canceled }
+class Fine {
+  +id: int
+  +amount: decimal
+  +status: FineStatus
+}
+enum FineStatus { unpaid; paid }
+User "1" -- "*" Loan
+User "1" -- "*" Reservation
+User "1" -- "*" Fine
+Book "1" -- "*" BookCopy
+BookCopy "1" -- "*" Loan
+Loan "1" -- "0..1" Fine
+Reservation "*" --> Book
+@enduml
+

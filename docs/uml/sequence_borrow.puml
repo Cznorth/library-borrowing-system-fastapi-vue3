@@ -1,0 +1,12 @@
+@startuml
+actor Reader
+Reader -> Frontend: click Borrow(copy_id)
+Frontend -> Backend: POST /loans {copy_id}
+Backend -> Services: LoansService.borrow(copy_id, user)
+Services -> Repositories: CopiesRepo.lock(copy)
+Repositories --> Services: status available
+Services -> Repositories: LoansRepo.create(...)
+Services -> Repositories: CopiesRepo.update(status=loaned)
+Backend --> Frontend: success
+@enduml
+
