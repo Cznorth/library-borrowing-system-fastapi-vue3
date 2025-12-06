@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import Login from '../pages/Login.vue'
+import Register from '../pages/Register.vue'
 import Home from '../pages/Home.vue'
 import BookDetail from '../pages/BookDetail.vue'
 import MyLoans from '../pages/MyLoans.vue'
@@ -13,6 +14,7 @@ import { useAuthStore } from '../stores/auth'
 const routes: RouteRecordRaw[] = [
   { path: '/', component: Home },
   { path: '/login', component: Login },
+  { path: '/register', component: Register },
   { path: '/books/:id', component: BookDetail },
   { path: '/me/loans', component: MyLoans },
   { path: '/me/reservations', component: MyReservations },
@@ -32,7 +34,7 @@ router.beforeEach(async (to, from) => {
   if (!store.user) {
     await store.fetchMe()
   }
-  if (to.path !== '/login' && !localStorage.getItem('token')) {
+  if (to.path !== '/login' && to.path !== '/register' && !localStorage.getItem('token')) {
     return '/login'
   }
   // 简单的角色保护：访问 /admin 需要管理员角色

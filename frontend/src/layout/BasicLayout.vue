@@ -30,6 +30,7 @@
             </template>
             <template v-else>
               <el-button type="primary" link @click="$router.push('/login')">登录</el-button>
+              <el-button type="success" link @click="$router.push('/register')">注册</el-button>
             </template>
           </div>
         </div>

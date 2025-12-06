@@ -3,12 +3,15 @@
     <el-card class="login-card">
       <template #header>
         <div class="card-header">
-          <h2>图书馆借阅系统</h2>
+          <h2>用户注册</h2>
         </div>
       </template>
       <el-form :model="form" label-width="0px" @submit.prevent="onSubmit">
         <el-form-item>
           <el-input v-model="form.username" placeholder="用户名" prefix-icon="User" size="large" />
+        </el-form-item>
+        <el-form-item>
+          <el-input v-model="form.email" placeholder="邮箱" prefix-icon="Message" size="large" />
         </el-form-item>
         <el-form-item>
           <el-input
@@ -21,48 +24,65 @@
           />
         </el-form-item>
         <el-form-item>
+          <el-input
+            v-model="form.confirm"
+            type="password"
+            placeholder="确认密码"
+            prefix-icon="Lock"
+            show-password
+            size="large"
+          />
+        </el-form-item>
+        <el-form-item>
           <el-button type="primary" @click="onSubmit" :loading="loading" style="width: 100%" size="large">
-            登录
+            注册
           </el-button>
         </el-form-item>
         <el-form-item>
           <div style="text-align:center; width: 100%">
-            <el-link type="primary" @click="$router.push('/register')">没有账号？注册</el-link>
+            <el-link type="primary" @click="$router.push('/login')">已有账号？去登录</el-link>
           </div>
         </el-form-item>
       </el-form>
     </el-card>
   </div>
-</template>
+  </template>
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import { User, Lock } from '@element-plus/icons-vue'
+import { User, Lock, Message } from '@element-plus/icons-vue'
 
 const form = reactive({
   username: '',
-  password: ''
+  email: '',
+  password: '',
+  confirm: ''
 })
 const loading = ref(false)
 
 async function onSubmit() {
-  if (!form.username || !form.password) {
-    ElMessage.warning('请输入用户名和密码')
+  if (!form.username || !form.email || !form.password || !form.confirm) {
+    ElMessage.warning('请完整填写信息')
+    return
+  }
+  if (form.password !== form.confirm) {
+    ElMessage.warning('两次输入的密码不一致')
     return
   }
   loading.value = true
   try {
-    const { data } = await axios.post('/api/auth/login', {
+    await axios.post('/api/auth/register', {
       username: form.username,
-      password: form.password
+      email: form.email,
+      password: form.password,
+      role: 'reader'
     })
-    localStorage.setItem('token', data.access_token)
-    ElMessage.success('登录成功')
-    location.href = '/'
+    ElMessage.success('注册成功，请登录')
+    location.href = '/login'
   } catch (error) {
-    ElMessage.error('登录失败，请检查用户名或密码')
+    ElMessage.error('注册失败，请检查输入信息')
   } finally {
     loading.value = false
   }
