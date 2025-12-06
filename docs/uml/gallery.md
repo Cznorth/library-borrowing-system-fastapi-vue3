@@ -1,0 +1,15 @@
+# UML图集预览
+
+![用例图](./exports/usecase.png)
+![包图](./exports/package.png)
+![部署图](./exports/deployment.png)
+![构件图](./exports/components.png)
+![界面类图](./exports/class_ui.png)
+![领域类图](./exports/class_domain.png)
+![数据设计类图](./exports/data_design_class.png)
+![借阅活动图](./exports/activity_borrow.png)
+![归还活动图](./exports/activity_return.png)
+![预约活动图](./exports/activity_reservation.png)
+![导航顺序图](./exports/sequence_navigation.png)
+![借阅顺序图](./exports/sequence_borrow.png)
+![数据操作活动图](./exports/data_operation_activity.png)

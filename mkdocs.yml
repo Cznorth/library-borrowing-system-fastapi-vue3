@@ -16,6 +16,8 @@ nav:
     - 预约: usecases/reserve_usecase.md
     - 管理后台: usecases/admin_manage_books_usecase.md
     - 缴纳罚金: usecases/pay_fine_usecase.md
-  - UML图集: uml/README.md
+  - UML图集: 
+    - 使用说明: uml/README.md
+    - 图集预览: uml/gallery.md
   - 实验报告: report.md
   - 汇报PPT: ppt/slides.md
