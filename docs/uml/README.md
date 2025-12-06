@@ -21,3 +21,15 @@
 
 导出图片后请放入 `docs/uml/exports/` 目录并在报告中引用。
 
+## 中文显示与编码说明
+
+- 文件编码：为避免中文乱码，请将所有 `*.puml` 文件保存为 `GB2312` 编码（VS Code：右下角编码 → 重新以编码打开 → 另存为）。
+- 字体统一：所有图在顶端 `!include _skin.iuml`，统一中文字体为 `Microsoft YaHei`，可按需改为其它中文字体。
+- Graphviz 渲染：本地脚本会检测并使用 `dot.exe` 进行渲染，进一步减少中文兼容问题。
+- 渲染命令（在 `docs/uml` 目录）：
+  - `java -jar ..\tools\plantuml.jar -graphvizdot "C:\Program Files\Graphviz\bin\dot.exe" -tpng -o exports *.puml`
+
+若仍存在中文显示问题，建议：
+- 安装备用中文字体（如 `Noto Sans CJK SC` 或 `思源黑体`）并在 `_skin.iuml` 中替换字体名。
+- 确认所有 `*.puml` 已保存为 `GB2312`（而非 UTF-8/UTF-16）。
+
