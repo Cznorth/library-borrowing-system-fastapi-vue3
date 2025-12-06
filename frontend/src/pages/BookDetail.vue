@@ -9,7 +9,21 @@
     <el-card class="book-info-card">
       <div class="book-layout">
         <div class="book-cover">
-           <el-icon :size="100" color="#909399"><Notebook /></el-icon>
+           <el-image
+             v-if="book.cover_url"
+             :src="book.cover_url"
+             fit="cover"
+             style="width: 100%; height: 100%; border-radius: 4px;"
+           >
+             <template #error>
+               <div class="image-error">
+                 <el-icon :size="100" color="#909399"><Notebook /></el-icon>
+               </div>
+             </template>
+           </el-image>
+           <template v-else>
+             <el-icon :size="100" color="#909399"><Notebook /></el-icon>
+           </template>
         </div>
         <div class="book-meta">
           <h1>{{ book.title }}</h1>
@@ -17,7 +31,7 @@
             <el-descriptions-item label="作者">{{ book.author }}</el-descriptions-item>
             <el-descriptions-item label="ISBN">{{ book.isbn }}</el-descriptions-item>
             <el-descriptions-item label="出版社">{{ book.publisher || '未知' }}</el-descriptions-item>
-            <el-descriptions-item label="简介">{{ book.description || '暂无简介' }}</el-descriptions-item>
+            <el-descriptions-item label="简介">{{ book.summary || '暂无简介' }}</el-descriptions-item>
           </el-descriptions>
         </div>
       </div>
@@ -132,6 +146,14 @@ async function borrow(copyId: number) {
   align-items: center;
   border-radius: 4px;
   flex-shrink: 0;
+}
+
+.image-error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-meta {

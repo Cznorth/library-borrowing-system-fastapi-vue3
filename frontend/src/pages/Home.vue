@@ -20,7 +20,21 @@
       <el-col :xs="24" :sm="12" :md="8" :lg="6" v-for="b in books" :key="b.id">
         <el-card class="book-card" shadow="hover" @click="$router.push(`/books/${b.id}`)">
           <div class="book-cover">
-            <el-icon :size="60" color="#909399"><Notebook /></el-icon>
+            <el-image
+              v-if="b.cover_url"
+              :src="b.cover_url"
+              fit="cover"
+              style="width: 100%; height: 100%; border-radius: 4px;"
+            >
+              <template #error>
+                <div class="image-error">
+                  <el-icon :size="60" color="#909399"><Notebook /></el-icon>
+                </div>
+              </template>
+            </el-image>
+            <template v-else>
+              <el-icon :size="60" color="#909399"><Notebook /></el-icon>
+            </template>
           </div>
           <div class="book-info">
             <h3 class="book-title" :title="b.title">{{ b.title }}</h3>
@@ -98,6 +112,14 @@ onMounted(() => {
   align-items: center;
   border-radius: 4px;
   margin-bottom: 15px;
+}
+
+.image-error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .book-title {
