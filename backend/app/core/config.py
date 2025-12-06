@@ -12,6 +12,9 @@ class Settings(BaseSettings):
     JWT_SECRET_KEY: str = "change-me"
     JWT_ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
+    DEFAULT_ADMIN_USERNAME: str | None = None
+    DEFAULT_ADMIN_EMAIL: str | None = None
+    DEFAULT_ADMIN_PASSWORD: str | None = None
 
     class Config:
         env_file = ".env"
