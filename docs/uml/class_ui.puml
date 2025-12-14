@@ -1,13 +1,79 @@
 @startuml
 !include _skin.iuml
-class LoginPage
-class HomePage
-class BookDetailPage
-class MyLoansPage
-class MyReservationsPage
-class AdminDashboard
-class BooksManagePage
-class UsersManagePage
+
+class LoginPage {
+  +usernameInput
+  +passwordInput
+  +loginButton
+  +registerLink
+  +submitLogin()
+  +navigateToRegister()
+}
+
+class HomePage {
+  +searchInput
+  +searchButton
+  +bookList
+  +adminMenuItem
+  +search(q)
+  +viewDetail(bookId)
+  +goAdmin()
+}
+
+class BookDetailPage {
+  +titleLabel
+  +authorLabel
+  +copyList
+  +borrowButton
+  +borrow(copyId)
+  +refreshCopies()
+}
+
+class MyLoansPage {
+  +loansTable
+  +renewButton
+  +returnButton
+  +renew(loanId)
+  +return(loanId)
+}
+
+class MyReservationsPage {
+  +reservationsTable
+  +cancelButton
+  +cancel(reservationId)
+}
+
+class MyFinesPage {
+  +finesTable
+  +payButton
+  +pay(fineId)
+}
+
+class AdminDashboard {
+  +statsPanel
+  +navBooks
+  +navUsers
+  +openBooksManage()
+  +openUsersManage()
+}
+
+class BooksManagePage {
+  +searchInput
+  +addBookButton
+  +importButton
+  +booksTable
+  +handleSearch(q)
+  +createBook(data)
+  +bulkImport(fileOrItems)
+}
+
+class UsersManagePage {
+  +usersTable
+  +roleSelect
+  +deleteButton
+  +updateUser(userId, data)
+  +deleteUser(userId)
+}
 
 LoginPage --> HomePage : login success
 HomePage --> BookDetailPage : click item
