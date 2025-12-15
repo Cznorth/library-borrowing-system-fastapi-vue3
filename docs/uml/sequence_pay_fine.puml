@@ -1,0 +1,9 @@
+@startuml
+!include _skin.iuml
+actor Reader
+Reader -> Frontend: click Pay(fine_id)
+Frontend -> Backend: POST /fines/{fine_id}/pay
+Backend -> Repositories: FinesRepo.mark_paid(fine_id)
+Backend --> Frontend: success
+@enduml
+

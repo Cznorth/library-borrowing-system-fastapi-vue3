@@ -1,0 +1,10 @@
+@startuml
+!include _skin.iuml
+actor Reader
+Reader -> Frontend: click Reserve(book_id)
+Frontend -> Backend: POST /reservations {book_id}
+Backend -> Services: ReservationsService.enqueue(book_id, user)
+Services -> Repositories: ReservationsRepo.create(book_id, user_id)
+Backend --> Frontend: success
+@enduml
+

@@ -1,0 +1,13 @@
+@startuml
+!include _skin.iuml
+actor Reader
+Reader -> Frontend: click Return(loan_id)
+Frontend -> Backend: POST /loans/{loan_id}/return
+Backend -> Services: LoansService.return(loan_id, user)
+Services -> Repositories: LoansRepo.get(loan_id)
+Services -> Repositories: LoansRepo.mark_returned(loan_id)
+Services -> Repositories: CopiesRepo.update(status=available)
+Services -> Repositories: FinesRepo.create_if_overdue(loan_id)
+Backend --> Frontend: success
+@enduml
+

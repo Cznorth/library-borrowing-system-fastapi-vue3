@@ -1,0 +1,10 @@
+@startuml
+!include _skin.iuml
+actor User
+User -> Frontend: submit(username,email,password)
+Frontend -> Backend: POST /auth/register
+Backend -> Repositories: UsersRepo.get_by_username/email
+Repositories --> Backend: unique ok or conflict
+Backend --> Frontend: 200 success or 400 error
+@enduml
+

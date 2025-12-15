@@ -1,0 +1,11 @@
+@startuml
+!include _skin.iuml
+actor Reader
+Reader -> Frontend: click Renew(loan_id)
+Frontend -> Backend: POST /loans/{loan_id}/renew
+Backend -> Services: LoansService.renew(loan_id, user)
+Services -> Repositories: LoansRepo.get(loan_id)
+Services -> Repositories: LoansRepo.renew(loan_id)  ' update due_date, increment count
+Backend --> Frontend: success or error (limit/overdue)
+@enduml
+

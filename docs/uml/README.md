@@ -14,7 +14,7 @@
   - 构件图：`components.puml`
   - 领域类图：`class_domain.puml`
   - 界面类图：`class_ui.puml`
-  - 顺序图（导航/借阅）：`sequence_navigation.puml`、`sequence_borrow.puml`
+  - 顺序图（导航/鉴权/注册/借阅/归还/续借/预约/罚金）：`sequence_navigation.puml`、`sequence_register.puml`、`sequence_borrow.puml`、`sequence_return.puml`、`sequence_renew.puml`、`sequence_reservation.puml`、`sequence_pay_fine.puml`
   - 活动图（登录/注册/借阅/归还/预约/续借）：`activity_login.puml`、`activity_register.puml`、`activity_borrow.puml`、`activity_return.puml`、`activity_reservation.puml`、`activity_renew.puml`
   - 数据设计类图：`data_design_class.puml`
   - 数据操作活动图：`data_operation_activity.puml`
