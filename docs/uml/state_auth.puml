@@ -1,0 +1,10 @@
+@startuml
+!include _skin.iuml
+[*] --> LoggedOut
+LoggedOut --> Authenticating : 提交用户名/密码
+Authenticating --> LoggedIn : 验证成功/发放令牌
+Authenticating --> LoginError : 验证失败
+LoginError --> LoggedOut : 重试/返回登录页
+LoggedIn --> LoggedOut : 退出登录
+@enduml
+

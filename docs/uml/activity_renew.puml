@@ -1,0 +1,20 @@
+@startuml
+!include _skin.iuml
+start
+:选择续借的借阅记录;
+:提交续借请求;
+if (未归还且未超期?) then (yes)
+  if (未超过续借上限?) then (yes)
+    :延长到期时间(如+14天);
+    :续借次数+1;
+    stop
+  else (no)
+    :提示“续借次数已达上限”;
+    stop
+  endif
+else (no)
+  :提示“借阅记录不可续借”;
+  stop
+endif
+@enduml
+

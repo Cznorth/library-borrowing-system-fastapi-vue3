@@ -1,0 +1,16 @@
+@startuml
+!include _skin.iuml
+start
+:填写用户名/邮箱/密码;
+:提交注册;
+:检查用户名/邮箱唯一性;
+if (被占用?) then (yes)
+  :提示“用户名或邮箱已存在”;
+  stop
+else (no)
+  :创建用户(角色=reader);
+  :返回成功并提示登录;
+  stop
+endif
+@enduml
+
