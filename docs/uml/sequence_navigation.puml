@@ -1,13 +1,18 @@
 @startuml
 !include _skin.iuml
-actor User
-User -> LoginPage: submit(username,password)
-LoginPage -> Backend: POST /auth/login
-Backend --> LoginPage: JWT token
-LoginPage -> Router: set token & navigate('/')</n>
-Router -> HomePage: render
-HomePage -> Backend: GET /books?q=keyword
-Backend --> HomePage: list
-HomePage -> BookDetailPage: navigate('/books/:id')
+actor 读者
+participant 登录页 as LoginPage
+participant 路由 as Router
+participant 首页 as HomePage
+participant 图书详情页 as BookDetailPage
+participant 后端 as Backend
+读者 -> 登录页: 提交用户名/密码
+登录页 -> 后端: POST /auth/login
+后端 --> 登录页: 返回JWT令牌
+登录页 -> 路由: 保存令牌并跳转“/”
+路由 -> 首页: 渲染页面
+首页 -> 后端: GET /books?q=关键字
+后端 --> 首页: 返回列表
+首页 -> 图书详情页: 跳转“/books/:id”
 @enduml
 

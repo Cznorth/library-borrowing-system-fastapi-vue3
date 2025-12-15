@@ -1,13 +1,16 @@
 @startuml
 !include _skin.iuml
-actor Reader
-Reader -> Frontend: click Return(loan_id)
-Frontend -> Backend: POST /loans/{loan_id}/return
-Backend -> Services: LoansService.return(loan_id, user)
-Services -> Repositories: LoansRepo.get(loan_id)
-Services -> Repositories: LoansRepo.mark_returned(loan_id)
-Services -> Repositories: CopiesRepo.update(status=available)
-Services -> Repositories: FinesRepo.create_if_overdue(loan_id)
-Backend --> Frontend: success
+actor 读者
+participant 前端 as Frontend
+participant 后端 as Backend
+participant 服务层 as Services
+participant 仓储 as Repositories
+读者 -> 前端: 点击“归还”(loan_id)
+前端 -> 后端: POST /loans/{loan_id}/return
+后端 -> 服务层: LoansService.return(loan_id, user)
+服务层 -> 仓储: LoansRepo.get(loan_id)
+服务层 -> 仓储: LoansRepo.mark_returned(loan_id)
+服务层 -> 仓储: CopiesRepo.update(status=可借)
+服务层 -> 仓储: FinesRepo.create_if_overdue(loan_id)
+后端 --> 前端: 成功
 @enduml
-

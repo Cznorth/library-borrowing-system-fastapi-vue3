@@ -1,11 +1,14 @@
 @startuml
 !include _skin.iuml
-actor Reader
-Reader -> Frontend: click Renew(loan_id)
-Frontend -> Backend: POST /loans/{loan_id}/renew
-Backend -> Services: LoansService.renew(loan_id, user)
-Services -> Repositories: LoansRepo.get(loan_id)
-Services -> Repositories: LoansRepo.renew(loan_id)  ' update due_date, increment count
-Backend --> Frontend: success or error (limit/overdue)
+actor 读者
+participant 前端 as Frontend
+participant 后端 as Backend
+participant 服务层 as Services
+participant 仓储 as Repositories
+读者 -> 前端: 点击“续借”(loan_id)
+前端 -> 后端: POST /loans/{loan_id}/renew
+后端 -> 服务层: LoansService.renew(loan_id, user)
+服务层 -> 仓储: LoansRepo.get(loan_id)
+服务层 -> 仓储: LoansRepo.renew(loan_id)
+后端 --> 前端: 成功或错误（超限/逾期）
 @enduml
-

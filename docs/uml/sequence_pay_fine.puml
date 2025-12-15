@@ -1,9 +1,11 @@
 @startuml
 !include _skin.iuml
-actor Reader
-Reader -> Frontend: click Pay(fine_id)
-Frontend -> Backend: POST /fines/{fine_id}/pay
-Backend -> Repositories: FinesRepo.mark_paid(fine_id)
-Backend --> Frontend: success
+actor 读者
+participant 前端
+participant 后端
+participant 仓储
+读者 -> 前端: 点击“缴纳罚金”(fine_id)
+前端 -> 后端: POST /fines/{fine_id}/pay
+后端 -> 仓储: FinesRepo.mark_paid(fine_id)
+后端 --> 前端: 支付成功
 @enduml
-

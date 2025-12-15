@@ -1,10 +1,12 @@
 @startuml
 !include _skin.iuml
-actor User
-User -> Frontend: submit(username,email,password)
-Frontend -> Backend: POST /auth/register
-Backend -> Repositories: UsersRepo.get_by_username/email
-Repositories --> Backend: unique ok or conflict
-Backend --> Frontend: 200 success or 400 error
+actor 读者
+participant 前端 as Frontend
+participant 后端 as Backend
+participant 仓储 as Repositories
+读者 -> 前端: 提交(用户名, 邮箱, 密码)
+前端 -> 后端: POST /auth/register
+后端 -> 仓储: UsersRepo.get_by_username/email
+仓储 --> 后端: 唯一/冲突
+后端 --> 前端: 成功(200)或错误(400)
 @enduml
-
